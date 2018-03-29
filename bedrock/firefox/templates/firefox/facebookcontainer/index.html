@@ -1,0 +1,117 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% add_lang_files "firefox/facebookcontainer" %}
+
+{% extends "firefox/base-pebbles.html" %}
+
+{% block page_title_prefix %}{% endblock %}
+{% block page_title %}{{_('Facebook Container for Firefox | Prevent Facebook from seeing what websites you visit.')}}{% endblock %}
+{% block page_desc %}{{_('Millions of people around the world trust Firefox Web browsers on Android, iOS and desktop computers. Fast. Private. Download now!')}}{% endblock %}
+
+{% block page_css %}
+  {% stylesheet 'firefox_facebook_container' %}
+{% endblock %}
+
+{% block body_id %}firefox{% endblock %}
+{% block body_class %}{% endblock %}
+
+{% block site_header %}{% endblock %}
+
+{% block content %}
+  <main role="main">
+  <section class="intro content-section">
+    <div class="content">
+
+      <div class="copy">
+        <img class="logo" src="{{ static('img/logos/firefox/logo-quantum.png') }}" width="100" height="100" alt="" />
+        <header>
+          <h1 id="main-heading">
+            {{ _('Prevent Facebook from seeing what websites you visit.') }}
+          </h1>
+          <h2>{{ _('Only on Firefox.') }}</h2>
+        </header>
+        <p><a href="https://addons.mozilla.org/firefox/addon/facebook-container/" class="button button-orange">{{ _('Get Facebook Container') }}</a></p>
+      </div>
+
+      <div class="optional-cta">
+        <aside class="fbcontainer-video">
+          <div class="moz-video-container">
+            <button class="moz-video-button" type="button" aria-controls="fbcontainer-video">{{ _('Watch the video') }}</button>
+            <div class="video-container">
+              <video id="fbcontainer-video" preload="metadata" controls poster="{{ static('img/firefox/facebook-container/video-poster.png') }}" data-ga-label="Facebook Container Video">
+                <source src="https://assets.mozilla.net/video/facenook-container/facebook-container.webm" type="video/webm">
+                <source src="https://assets.mozilla.net/video/facebook-container/facebook-container.mp4" type="video/mp4">
+                <a href="https://www.youtube.com/watch?v=YIywpvHewc0">
+                  <img src="{{ static('img/firefox/facebook-container/video-poster.png') }}" alt="">
+                </a>
+              </video>
+            </div>{#-- /.video-container --#}
+          </div>{#-- /.moz-video-container --#}
+        </aside>{#-- /.faster-video --#}
+      </div>{#-- /.optional-cta --#}
+
+    </div>
+  </section>
+
+  {% block details %}
+  <section class="details content-section">
+    <div class="content">
+      <ul>
+        <li>
+          <h3>{{ _('What is it?') }}</h3>
+          <p>
+          {% trans %}
+            As long as you’re logged into Facebook in your browser, Facebook can see what websites you visit in other tabs. To help give you more security we’ve created a tool for Firefox that helps prevent Facebook from seeing what websites you visit. It’s called “Facebook Container”.
+          {% endtrans %}
+          </p>
+        </li>
+        <li>
+          <h3>{{ _('How it works') }}</h3>
+          <p>
+          {% trans %}
+            Once you activate the extension, every time you visit Facebook it will open in a new blue-colored browser tab. This blue-colored tab is unique because it essentially tricks Facebook into thinking that you have no other tabs open.
+          {% endtrans %}
+          </p>
+        </li>
+        <li>
+          <h3>{{ _('About Firefox') }}</h3>
+          <p>
+          {% trans %}
+            We’re backed by Mozilla, the not-for-profit organization that fights for everyone’s online rights in common across the globe.
+          {% endtrans %}
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  {% endblock %}
+
+  {% block secondary_download %}
+  <section class="secondary-download content-section">
+    <div class="content">
+      <div class="download-contain">
+        <h2>
+        {% block secondary_download_cta %}
+          {{ _('Browse freely with Firefox today.') }}
+        {% endblock %}
+        </h2>
+        <div class="download-button-wrapper">
+          {{ download_firefox(alt_copy=_('Download Now'), locale_in_transition=true, dom_id="download-firefox-today") }}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+</main>
+{% endblock %}
+
+{% block email_form %}{% endblock %}
+
+{# Bug 1381776 #}
+{% block update_notification %}{% endblock %}
+
+{% block js %}
+  {% javascript 'firefox_facebook_container_video' %}
+{% endblock %}
